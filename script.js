@@ -11,6 +11,20 @@ pizzaJson.map((item, index)=>{
     pizzaItem.querySelector('.pizza-item--name').innerHTML = item.name;
     pizzaItem.querySelector('.pizza-item--desc').innerHTML = item.description;
 
+    pizzaItem.querySelector('a').addEventListener('click', (e)=> {
+        e.preventDefault();
+
+
+
+        qs('.pizzaWindowArea').style.opacity = 0;
+        qs('.pizzaWindowArea').style.display = 'flex';
+        setTimeout(()=> {
+            qs('.pizzaWindowArea').style.opacity = 1;
+        }, 200);
+
+        
+    });
+
 
     qs('.pizza-area').append(pizzaItem);
 });
