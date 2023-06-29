@@ -4,7 +4,7 @@ let modalQt = 1;
 const qs = (el)=>document.querySelector(el);
 const qsa = (el)=>document.querySelectorAll(el);
 
-// CRIANDO UMA CÓPIA DE MODELS DO HTML
+// LISTAGEM DAS PIZZAS
 pizzaJson.map((item, index)=>{
     let pizzaItem = qs('.models .pizza-item').cloneNode(true);
 
@@ -15,11 +15,10 @@ pizzaJson.map((item, index)=>{
     pizzaItem.querySelector('.pizza-item--name').innerHTML = item.name;
     pizzaItem.querySelector('.pizza-item--desc').innerHTML = item.description;
 
+    // EVENTO DE CLICK
     pizzaItem.querySelector('a').addEventListener('click', (e)=> {
         e.preventDefault();
-        // Selecionando a pizza clicada 
         let key = e.target.closest('.pizza-item').getAttribute('data-key');
-            // console.log(pizzaJson[key]);
             modalQt = 1;
 
             qs('.pizzaBig img').src = pizzaJson[key].img;
@@ -49,6 +48,17 @@ pizzaJson.map((item, index)=>{
         
     });
 
-
     qs('.pizza-area').append(pizzaItem);
+});
+
+// EVENTOS DO MODAL
+function closeModal() {
+    qs('.pizzaWindowArea').style.opacity = 0;
+    setTimeout(() => {
+        qs('.pizzaWindowArea').style.display = 'none';
+    }, 500);
+}
+qsa('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item)=> {
+    item.addEventListener('click', closeModal);
+
 });
