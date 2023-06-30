@@ -77,3 +77,12 @@ qs('.pizzaInfo--qtmais').addEventListener('click', ()=> {
     qs('.pizzaInfo--qt').innerHTML = modalQt;
 
 });
+
+// seleção de tamanho de pizza
+qsa('.pizzaInfo--size').forEach((size, sizeIndex)=> {
+    size.addEventListener('click', (e) => {
+        qs('.pizzaInfo--size.selected').classList.remove('selected');
+           size.classList.add('selected');
+    });
+
+});
