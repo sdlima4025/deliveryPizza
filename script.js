@@ -62,3 +62,18 @@ qsa('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item)=>
     item.addEventListener('click', closeModal);
 
 });
+
+// add e diminuir do botão modal
+qs('.pizzaInfo--qtmenos').addEventListener('click', ()=> {
+    if(modalQt > 1) {
+        modalQt--;
+        qs('.pizzaInfo--qt').innerHTML = modalQt;
+
+    }
+});
+
+qs('.pizzaInfo--qtmais').addEventListener('click', ()=> {
+    modalQt++;
+    qs('.pizzaInfo--qt').innerHTML = modalQt;
+
+});
