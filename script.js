@@ -1,4 +1,6 @@
+let cart = [];
 let modalQt = 1;
+let modalKey = 0;
 
 // PROTOTIPO DE QUERY'S
 const qs = (el)=>document.querySelector(el);
@@ -20,6 +22,7 @@ pizzaJson.map((item, index)=>{
         e.preventDefault();
         let key = e.target.closest('.pizza-item').getAttribute('data-key');
             modalQt = 1;
+            modalKey = key;
 
             qs('.pizzaBig img').src = pizzaJson[key].img;
             qs('.pizzaInfo h1').innerHTML = pizzaJson[key].name;
@@ -86,3 +89,16 @@ qsa('.pizzaInfo--size').forEach((size, sizeIndex)=> {
     });
 
 });
+
+qs('.pizzaInfo--addButton').addEventListener('click', () => {
+    let size = parseInt(qs('.pizzaInfo--size.selected').getAttribute('data-key'));
+   
+    cart.push({
+       id:pizzaJson[modalKey].id,
+       size,
+       qt:modalQt
+    });
+
+    closeModal();
+});
+
